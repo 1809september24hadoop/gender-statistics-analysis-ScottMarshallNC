@@ -20,7 +20,7 @@ public class GenderStatMapper extends Mapper<LongWritable, Text, Text, IntWritab
 		
 		for(String word: line.split("[\\r\\n]+")){
 			if(word.length() > 0){
-				String s = word.replaceAll("[^\\w.]", " ").replaceAll("( )+", " ");
+				String s = word.replaceAll("\",\"", ",").replaceAll("\"", "").replaceAll("( )+", " ");
 				context.write(new Text(s), new IntWritable(count++));
 			}
 		}
