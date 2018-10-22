@@ -16,17 +16,17 @@ public class SumReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 		
 		for(String word: line.split("[\\r\\n]+")){
 			if(word.length() > 0){
-				if((word.indexOf("attain") != -1)
-						&&(word.indexOf("female")!=-1)
-						&&(word.indexOf("some primary")!=-1)){
+				if((word.indexOf("graduation ratio") != -1)
+						&&(word.indexOf("tertiary")!=-1)
+						&&(word.indexOf("female")!=-1)){
 					
 						String[] tokens = word.split(",");
 						for(int i=tokens.length-1; i > 0; i--){
 							tokens[i].trim();
 							if(isDouble(tokens[i])){
 								double educationRate = Double.parseDouble(tokens[i]);
-								if(educationRate < 30.0){
-									String s = tokens[0] + "most recent education rate is: " + tokens[i];
+								if((educationRate < 30.0)&&(educationRate >= 0)){
+									String s = tokens[0] + " most recent female primary education rate is: " + tokens[i];
 									context.write(new Text(s), new IntWritable(count++));
 									break;
 								}
