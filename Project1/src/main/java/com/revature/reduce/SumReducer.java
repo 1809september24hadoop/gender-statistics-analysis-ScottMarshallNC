@@ -2,11 +2,12 @@ package com.revature.reduce;
 
 import java.io.IOException;
 
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class SumReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+public class SumReducer extends Reducer<Text, IntWritable, Text, DoubleWritable> {
 
 	int count = 1;
 	public void reduce(Text value, Iterable<IntWritable> key, Context context) throws IOException, InterruptedException{
@@ -20,14 +21,13 @@ public class SumReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 						&&(word.indexOf("tertiary")!=-1)
 						&&(word.indexOf("female")!=-1)){
 					
-						String[] tokens = word.split(",");
+						String[] tokens = word.split(";");
 						for(int i=tokens.length-1; i > 0; i--){
-							tokens[i].trim();
 							if(isDouble(tokens[i])){
 								double educationRate = Double.parseDouble(tokens[i]);
 								if((educationRate < 30.0)&&(educationRate >= 0)){
-									String s = tokens[0] + " most recent female primary education rate is: " + tokens[i];
-									context.write(new Text(s), new IntWritable(count++));
+									String s = tokens[0] + " most recent female primary education rate is: ";
+									context.write(new Text(s), new DoubleWritable(educationRate));
 									break;
 								}
 							}

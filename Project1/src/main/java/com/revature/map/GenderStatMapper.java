@@ -16,11 +16,21 @@ public class GenderStatMapper extends Mapper<LongWritable, Text, Text, IntWritab
 			throws IOException, InterruptedException{
 		
 		String line = value.toString();
+		StringBuilder newLine = new StringBuilder();
 		
 		
 		for(String word: line.split("[\\r\\n]+")){
 			if(word.length() > 0){
-				String s = word.replaceAll("\",\"", ",").replaceAll("\"", "").replaceAll("( )+", " ");
+				String[] parts = word.split("\",");
+				for(int i=0; i < parts.length; i++){
+					parts[i].trim();
+					if(i != parts.length){
+						newLine.append(parts[i]);
+						newLine.append(";");
+					}
+				}
+				String a = newLine.toString();
+				String s = a.replaceAll("\"", "");
 				context.write(new Text(s), new IntWritable(count++));
 			}
 		}

@@ -2,11 +2,12 @@ package com.revature.reduce;
 
 import java.io.IOException;
 
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class IncreaseInEducationReducer  extends Reducer<Text, IntWritable, Text, IntWritable> {
+public class IncreaseInEducationReducer  extends Reducer<Text, IntWritable, Text, DoubleWritable> {
 
 	int count = 1;
 	public void reduce(Text value, Iterable<IntWritable> key, Context context) throws IOException, InterruptedException{
@@ -17,22 +18,24 @@ public class IncreaseInEducationReducer  extends Reducer<Text, IntWritable, Text
 		for(String word: line.split("[\\r\\n]+")){
 			if(word.length() > 0){
 				if((word.indexOf("United States") != -1)
-						&&(word.indexOf("graduation")!=-1)
-						&&(word.indexOf("tertiary")!=-1)
+						&&(word.indexOf("completed")!=-1)
+						&&(word.indexOf("Education")!=-1)
 						&&(word.indexOf("female")!=-1)){
-					
-					String[] tokens = word.split(",");
 
-							tokens[46].trim();
-							tokens[58].trim();
-							if((isDouble(tokens[46]))&&(isDouble(tokens[58]))){
-								double educationRateOlder = Double.parseDouble(tokens[46]);
-								double educationRateNewer = Double.parseDouble(tokens[58]);
+						String[] tokens = word.split(";");
+
+						for(int i =44; i < tokens.length - 1; i++){
+							int j = i + 1;
+							if((isDouble(tokens[i]))&&(isDouble(tokens[j]))){
+								double educationRateOlder = Double.parseDouble(tokens[i]);
+								double educationRateNewer = Double.parseDouble(tokens[j]);
 								Double educationNew = educationRateNewer - educationRateOlder; 
-								String s = tokens[0] + " education rate change from 2000 to 2012: " + educationNew.toString();
-									context.write(new Text(s), new IntWritable(count++));
-									break;
+								int sub = i + 1956; 
+								int subSecond = j + 1956;
+								String s = tokens[0] + " " + tokens[2] + " " + sub +" to " + subSecond;
+									context.write(new Text(s), new DoubleWritable(educationNew));
 							}
+						}
 				}
 			}
 		}
