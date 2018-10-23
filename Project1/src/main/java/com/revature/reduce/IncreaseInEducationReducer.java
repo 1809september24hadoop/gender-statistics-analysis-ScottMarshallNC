@@ -17,10 +17,7 @@ public class IncreaseInEducationReducer  extends Reducer<Text, IntWritable, Text
 		
 		for(String word: line.split("[\\r\\n]+")){
 			if(word.length() > 0){
-				if((word.indexOf("United States") != -1)
-						&&(word.indexOf("completed")!=-1)
-						&&(word.indexOf("Education")!=-1)
-						&&(word.indexOf("female")!=-1)){
+
 
 						String[] tokens = word.split(";");
 
@@ -36,7 +33,6 @@ public class IncreaseInEducationReducer  extends Reducer<Text, IntWritable, Text
 									context.write(new Text(s), new DoubleWritable(educationNew));
 							}
 						}
-				}
 			}
 		}
 	}

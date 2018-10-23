@@ -12,8 +12,11 @@ import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.revature.map.GenderStatMapper;
-import com.revature.reduce.SumReducer;
+import com.revature.IncreaseInEducation;
+import com.revature.map.FemaleGraduationMapper;
+import com.revature.reduce.WorldFemaleEmploymentReducer;
+import com.revature.reduce.WorldMaleEmploymentReducer;
+import com.revature.reduce.FemaleGraduationReducer;
 
 public class MapInOneLineTest {
 
@@ -23,6 +26,7 @@ public class MapInOneLineTest {
 //	
 //	@Before
 //	public void setUp(){
+//		
 //		GenderStatMapper mapper = new GenderStatMapper();
 //		mapDriver = new MapDriver<>();
 //		mapDriver.setMapper(mapper);
@@ -31,16 +35,26 @@ public class MapInOneLineTest {
 //		reduceDriver = new ReduceDriver<>();
 //		reduceDriver.setReducer(reducer);
 //		
+//		IncreaseInEducation reducerForEducationRate = new IncreaseInEducation();
+//		reduceDriver = new ReduceDriver<>();
+//		reduceDriver.setReducer(reducer);
+//		
+//		PercentMaleEmployementByCountryReducer reducerForMaleEmployement = new PercentMaleEmployementByCountryReducer();
+//		reduceDriver = new ReduceDriver<>();
+//		reduceDriver.setReducer(reducer);
+//		
+//		PercentFemaleEmployementByCountryReducer reducerForFemaleEmployement = new PercentFemaleEmployementByCountryReducer();
+//		reduceDriver = new ReduceDriver<>();
+//		reduceDriver.setReducer(reducer);
+//		
 //	}
 //	
 //	@Test
 //	public void testMapper(){
-//		mapDriver.withInput(new LongWritable(1), new Text("cat cat dog"));
+//		mapDriver.withInput(new LongWritable(1), new Text());
 //		
-//		mapDriver.withOutput(new Text("cat"), new IntWritable(1));
-//		mapDriver.withOutput(new Text("cat"), new IntWritable(1));
-//		mapDriver.withOutput(new Text("dog"), new IntWritable(1));
-//		
+//		mapDriver.withOutput(new Text(""), new IntWritable(1));
+//	
 //		mapDriver.runTest();
 //	}
 //	
@@ -63,5 +77,5 @@ public class MapInOneLineTest {
 //		mapReduceDriver.addOutput(new Text("dog"), new IntWritable(1));
 //		mapReduceDriver.runTest();
 //	}
-//	
+	
 }

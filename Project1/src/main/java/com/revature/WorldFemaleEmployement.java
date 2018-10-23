@@ -7,11 +7,10 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.revature.map.IncreaseInEducationMapper;
-import com.revature.reduce.IncreaseInEducationReducer;
+import com.revature.map.WorldFemaleEmploymentMapper;
+import com.revature.reduce.WorldFemaleEmploymentReducer;
 
-
-public class IncreaseInEducation {
+public class WorldFemaleEmployement {
 
 	public static void main(String[] args) throws Exception {
 		if(args.length != 2){
@@ -21,14 +20,14 @@ public class IncreaseInEducation {
 		
 		Job job = new Job();
 		
-		job.setJarByClass(IncreaseInEducationMapper.class);
-		job.setJobName("Test 2");
+		job.setJarByClass(WorldFemaleEmploymentMapper.class);
+		job.setJobName("Test 3");
 		
 		FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		
-		job.setMapperClass(IncreaseInEducationMapper.class);
-		job.setReducerClass(IncreaseInEducationReducer.class);
+		job.setMapperClass(WorldFemaleEmploymentMapper.class);
+		job.setReducerClass(WorldFemaleEmploymentReducer.class);
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
