@@ -1,0 +1,38 @@
+[master 1cf844e] EVERTYTHING WORKSgit add .git add .
+ Committer: ScottMarshallnc <cloudera@quickstart.cloudera>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+If the identity used for this commit is wrong, you can fix it with:
+
+    git commit --amend --author='Your Name <you@example.com>'
+
+ 39 files changed, 874 insertions(+), 91 deletions(-)
+ create mode 100644 Project1/src/main/java/com/revature/map/FemaleGradRateMapper.java
+ create mode 100644 Project1/src/main/java/com/revature/map/IndustrialEmploymentMapper.java
+ create mode 100644 Project1/src/main/java/com/revature/reduce/FemaleGradRateReducer.java
+ create mode 100644 Project1/src/test/java/com/revature/test/FemaleGraduationTest.java
+ create mode 100644 Project1/src/test/java/com/revature/test/IncreaseInEducationTest.java
+ create mode 100644 Project1/src/test/java/com/revature/test/WorldFemaleEmploymentTest.java
+ create mode 100644 Project1/src/test/java/com/revature/test/WorldMaleEmployementTest.java
+ create mode 100644 Project1/target/classes/com/revature/map/FemaleGradRateMapper.class
+ create mode 100644 Project1/target/classes/com/revature/map/IndustrialEmploymentMapper.class
+ rewrite Project1/target/classes/com/revature/map/WorldFemaleEmploymentMapper.class (61%)
+ rewrite Project1/target/classes/com/revature/map/WorldMaleEmploymentMapper.class (61%)
+ create mode 100644 Project1/target/classes/com/revature/reduce/FemaleGradRateReducer.class
+ create mode 100644 Project1/target/surefire-reports/TEST-com.revature.test.FemaleGraduationTest.xml
+ create mode 100644 Project1/target/surefire-reports/TEST-com.revature.test.IncreaseInEducationTest.xml
+ create mode 100644 Project1/target/surefire-reports/TEST-com.revature.test.WorldFemaleEmploymentTest.xml
+ create mode 100644 Project1/target/surefire-reports/TEST-com.revature.test.WorldMaleEmployementTest.xml
+ create mode 100644 Project1/target/surefire-reports/com.revature.test.FemaleGraduationTest.txt
+ create mode 100644 Project1/target/surefire-reports/com.revature.test.IncreaseInEducationTest.txt
+ create mode 100644 Project1/target/surefire-reports/com.revature.test.WorldFemaleEmploymentTest.txt
+ create mode 100644 Project1/target/surefire-reports/com.revature.test.WorldMaleEmployementTest.txt
+ create mode 100644 Project1/target/test-classes/com/revature/test/FemaleGraduationTest.class
+ create mode 100644 Project1/target/test-classes/com/revature/test/IncreaseInEducationTest.class
+ create mode 100644 Project1/target/test-classes/com/revature/test/WorldFemaleEmploymentTest.class
+ create mode 100644 Project1/target/test-classes/com/revature/test/WorldMaleEmployementTest.class
