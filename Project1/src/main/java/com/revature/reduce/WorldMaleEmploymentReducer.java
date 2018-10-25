@@ -18,8 +18,8 @@ public class WorldMaleEmploymentReducer extends Reducer<Text, IntWritable, Text,
 		for(String word: line.split("[\\r\\n]+")){
 			if(word.length() > 0){
 
-					
 					String[] tokens = word.split(";");
+					if(tokens.length > 40){
 					
 						if((isDouble(tokens[44]))&&(isDouble(tokens[59]))){
 							double educationRateOlder = Double.parseDouble(tokens[44]);
@@ -30,6 +30,7 @@ public class WorldMaleEmploymentReducer extends Reducer<Text, IntWritable, Text,
 							String s = tokens[0] + " " + tokens[2] + " " + sub +" to " + subSecond;
 								context.write(new Text(s), new DoubleWritable(educationNew));
 						}
+					}
 			}
 		}
 	}

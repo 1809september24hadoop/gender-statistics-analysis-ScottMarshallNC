@@ -7,8 +7,8 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.revature.map.FemaleGraduationMapper;
-import com.revature.reduce.FemaleGraduationReducer;
+import com.revature.map.FemaleGradRateMapper;
+import com.revature.reduce.FemaleGradRateReducer;
 
 
 public class FemaleGraduation {
@@ -21,14 +21,14 @@ public class FemaleGraduation {
 		
 		Job job = new Job();
 		
-		job.setJarByClass(FemaleGraduationMapper.class);
+		job.setJarByClass(FemaleGradRateMapper.class);
 		job.setJobName("Test 1");
 		
 		FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		
-		job.setMapperClass(FemaleGraduationMapper.class);
-		job.setReducerClass(FemaleGraduationReducer.class);
+		job.setMapperClass(FemaleGradRateMapper.class);
+		job.setReducerClass(FemaleGradRateReducer.class);
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);

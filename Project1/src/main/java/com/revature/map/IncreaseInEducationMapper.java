@@ -28,8 +28,8 @@ public class IncreaseInEducationMapper extends Mapper<LongWritable, Text, Text, 
 					String[] parts = word.split("\",");
 					for(int i=0; i < parts.length; i++){
 						parts[i].trim();
-						if(i != parts.length){
-							newLine.append(parts[i]);
+						newLine.append(parts[i]);
+						if(i != parts.length-1){
 							newLine.append(";");
 						}
 					}

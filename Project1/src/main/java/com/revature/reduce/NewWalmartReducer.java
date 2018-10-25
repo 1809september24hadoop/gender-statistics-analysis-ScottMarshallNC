@@ -32,7 +32,7 @@ public class NewWalmartReducer extends Reducer<Text, IntWritable, Text, DoubleWr
 						counter++;
 						if((counter > 3)&&(subSecond > 2014)&&(educationNew > 1.0)){
 							
-								String s ="POSSIBLE WALMART LOCATION!" + tokens[0] + " " + sub +" to " + subSecond ;
+								String s ="POSSIBLE WALMART LOCATION!   " + tokens[0] + " " + sub +" to " + subSecond ;
 							
 							context.write(new Text(s), new DoubleWritable(educationNew));
 						}

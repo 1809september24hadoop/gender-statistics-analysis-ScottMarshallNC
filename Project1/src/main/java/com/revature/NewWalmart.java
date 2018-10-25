@@ -7,7 +7,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-import com.revature.map.NewWalmartMapper;
+import com.revature.map.IndustrialEmploymentMapper;
 import com.revature.reduce.NewWalmartReducer;
 
 
@@ -21,13 +21,14 @@ public class NewWalmart {
 		
 		Job job = new Job();
 		
-		job.setJarByClass(NewWalmartMapper.class);
+		job.setJarByClass(IndustrialEmploymentMapper.class);
 		job.setJobName("Test 5");
 		
 		FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		
-		job.setMapperClass(NewWalmartMapper.class);
+		job.setMapperClass(IndustrialEmploymentMapper.class);
+
 		job.setReducerClass(NewWalmartReducer.class);
 
 		job.setOutputKeyClass(Text.class);

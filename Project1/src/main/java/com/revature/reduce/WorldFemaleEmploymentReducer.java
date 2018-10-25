@@ -19,7 +19,7 @@ public class WorldFemaleEmploymentReducer extends Reducer<Text, IntWritable, Tex
 			if(word.length() > 0){
 					
 					String[] tokens = word.split(";");
-					
+					if(tokens.length > 59){
 						if((isDouble(tokens[44]))&&(isDouble(tokens[59]))){
 							double educationRateOlder = Double.parseDouble(tokens[44]);
 							double educationRateNewer = Double.parseDouble(tokens[59]);
@@ -29,6 +29,7 @@ public class WorldFemaleEmploymentReducer extends Reducer<Text, IntWritable, Tex
 							String s = tokens[0] + " " + tokens[2] + " " + sub +" to " + subSecond;
 								context.write(new Text(s), new DoubleWritable(educationNew));
 						}
+					}
 			}
 		}
 	}

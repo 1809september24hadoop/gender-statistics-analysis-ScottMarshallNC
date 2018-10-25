@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class WorldFemaleEmploymentMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+public class FemaleGradRateMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
 	int count = 1;
 	
@@ -21,15 +21,14 @@ public class WorldFemaleEmploymentMapper extends Mapper<LongWritable, Text, Text
 		
 		for(String word: line.split("[\\r\\n]+")){
 			if(word.length() > 0){
-				if((word.indexOf("Employment to pop") != -1)
-						&&(word.indexOf("15+")!=-1)
-						&&(word.indexOf("ILO")!=-1)
+				if((word.indexOf("graduation ratio") != -1)
+						&&(word.indexOf("tertiary")!=-1)
 						&&(word.indexOf("female")!=-1)){
 					String[] parts = word.split("\",");
 					for(int i=0; i < parts.length; i++){
 						parts[i].trim();
-						if(i != parts.length){
-							newLine.append(parts[i]);
+						newLine.append(parts[i]);
+						if(i != parts.length-1){
 							newLine.append(";");
 						}
 					}
